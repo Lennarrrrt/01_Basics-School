@@ -1,5 +1,5 @@
-let (FirstName) = "Lennart";
-let (LastName) = "Röck";
+let FirstName = "Lennart";
+let LastName = "Röck";
 
 console.log(FirstName + " " + LastName);
 
