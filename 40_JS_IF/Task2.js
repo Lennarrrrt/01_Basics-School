@@ -1,5 +1,4 @@
-
-let  ("trafficlight") = "green";
+let  trafficlight = "green";
 if (trafficlight === "green") {
     console.log("You can go");
 }
