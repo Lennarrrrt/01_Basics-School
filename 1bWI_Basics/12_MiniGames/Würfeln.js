@@ -3,17 +3,22 @@ let replay = true;
 let size = prompt("Wie viele Seiten soll der Würfel haben?");
 let Size = Number(size);
 let money = 100;
+let einsatz = 0;
 while (replay == true) {
-    let einsatz = 0;
-    while (einsatz <= 0 || isNaN(einsatz) || einsatz > money) {
-        let einsatz = prompt("Wie viel möchtest du setzen? Du hast " + money + "$");
-        einsatz = Number(einsatz);
-        if (einsatz < money || !isNaN(einsatz) || einsatz <=! 0) {
+    let einsat = 0;
+    while (einsat <= 0 || isNaN(einsat) || einsat > money) {
+        let einsat = prompt("Wie viel möchtest du setzen? Du hast " + money + "$");
+        let einsatz = Number(einsat);
+        if (einsatz < money || !isNaN(einsatz) || einsatz <= !0) {
             break;
         }
 
         if (einsatz > money) {
             console.log("Du hast nicht genug Geld!");
+            continue;
+        }
+        if (isNaN(einsatz)) {
+            console.log("Bitte gib eine Zahl ein!");
             continue;
         }
     }
