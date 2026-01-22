@@ -1,16 +1,23 @@
 // MyGame - Example implementation of Game interface
 
 class MyGame extends Game {
-  x = 50;
+  x = 0;
   y = 0;
-
+  directionX = 1;
+  directionY = 1;
   init() {
     console.log("Game started!");
   }
 
   update(deltaTime) {
-    if (this.x > 0 && this.x < 750) { this.x += 100 * deltaTime; }
-    if (this.y < 550 && this.y > 0) { this.y += 50 * deltaTime; }
+    if (this.x >= 750) { this.directionX = -1; }
+    if (this.x <= 0) { this.directionX = 1; }
+    if (this.y >= 550) { this.directionY = -1; }
+    if (this.y <= 0) { this.directionY = 1; }
+    if (this.directionX === 1) { this.x += 100 * deltaTime; }
+    if (this.directionX === -1) { this.x -= 100 * deltaTime; }
+    if (this.directionY === -1) { this.y -= 50 * deltaTime; }
+    if (this.directionY === 1) { this.y += 50 * deltaTime; }
 
   }
 
