@@ -17,11 +17,8 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
   const passwordInput = document.getElementById("textInput").value;
 
   const hashed = await hashSHA256(passwordInput);
-  const hashed2 = await hashSHA256(user);
 
-  console.log(hashed2);
-
-  const usernameArray = ["lennart", "if8t32ifnd8tj3iurzsw"];
+  const usernameArray = ["lennart", "isaak"];
 
   // Pre-hashed passwords (SHA-256)
   const passwordArray = [
@@ -32,7 +29,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
   let valid = false;
 
   for (let i = 0; i < usernameArray.length; i++) {
-    if (hashed2 === usernameArray[i] && hashed === passwordArray[i]) {
+    if (user === usernameArray[i] && hashed === passwordArray[i]) {
       valid = true;
       break;
     }

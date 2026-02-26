@@ -13,6 +13,7 @@
     height: 25px;
     background: linear-gradient(to bottom right, #bdbdbd, #6c6c6c);
     margin: 10px;
+    z-index: 10000111111111100;
 }
 
 body {
@@ -40,6 +41,7 @@ body {
     font-size: 28px;
     position: relative;
     bottom: 0px;
+    z-index: 100001100;
 }
 
 .logintext {
@@ -58,21 +60,9 @@ body {
     margin: 20px;
     position: relative;
     top: 0px;
-    left: 33.33333333333333333333333333333333333333333333333333333333333333333%;
-
-
-   ;     
-
-;    
-  ; ; 
- ;  3
-  ;
-
-  ;  
-    ;
-  ; /*hehehehehhehah*/
-    z-index: -1;
-
+    left: 33.333333333333333333333333333333333333333333333333333333333%;
+    /*hehehehehhehah*/
+    z-index: 1000000;
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
@@ -89,4 +79,6 @@ body {
     width: 100%;
     z-index: 10000000;
     position: absolute;
+    pointer-events: none;
+    bottom: 0px;
 }
