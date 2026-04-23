@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login.site</title>
+    <link rel="stylesheet" href="Web.site.css">
+    <script src="hash.js"></script>
+</head>
+
+<body>
+
+    <div class="bgimg"></div>
+
+    <div class="box1">
+        <h1 class="logintext">Login</h1>
+
+        <form id="loginForm">
+            <label for="uname">Username:</label>
+            <input class="box" type="text" id="uname" name="uname"><br><br>
+
+            <label for="password">Password:</label>
+            <input class="box" type="password" id="textInput" name="password"><br><br>
+
+            <input class="loginbox" type="submit" value="Login Now">
+        </form>
+
+        <p id="output"></p>
+    </div>
+
+
+
+
+
+<script>
+    async function hashSHA256(input) {
+    const encoder = new TextEncoder();
+    const encodedData = encoder.encode(input);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", encodedData);
+    const byteArray = Array.from(new Uint8Array(hashBuffer));
+    return byteArray.map(byte => byte.toString(16).padStart(2, "0")).join("");
+}
+document.getElementById("loginForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+    const usernameInput = document.getElementById("uname").value;
+    const passwordInput = document.getElementById("textInput").value;
+    const hashedPassword = await hashSHA256(passwordInput);
+    const hashedUsername = await hashSHA256(usernameInput);
+    const storedUsernameHashes = ["50bee02a4d16d3b16cda07211ce67008304cc46920c17e2ac7f986e31e433ae4", "8babc5166044cab61287d1295bdc75762d131b2771f3da2610d433d70905288c"];
+    const storedPasswordHashes = ["aac3c462e38543d87fca5d94abd03aebcf63dc703e323062daec2e98300b4ad0", "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"];
+    let isValid = false;
+    for (let index = 0; index < storedUsernameHashes.length; index++) {
+        if (hashedUsername === storedUsernameHashes[index] && hashedPassword === storedPasswordHashes[index]) {
+            isValid = true;
+            break;
+        }
+    }
+    if (isValid) {
+        window.location.href = "2.html";
+    } else {
+        alert("Invalid username or password");
+    }
+});
+</script>
+    
+</body>
+
+</html>

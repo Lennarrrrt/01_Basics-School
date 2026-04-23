@@ -1,43 +1,30 @@
-async function hashSHA256(message) {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(message);
-
-  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-
-  return hashArray
-    .map(b => b.toString(16).padStart(2, "0"))
-    .join("");
+async function hashSHA256(input) {
+    const encoder = new TextEncoder();
+    const encodedData = encoder.encode(input);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", encodedData);
+    const byteArray = Array.from(new Uint8Array(hashBuffer));
+    return byteArray.map(byte => byte.toString(16).padStart(2, "0")).join("");
 }
-
 document.getElementById("loginForm").addEventListener("submit", async function(event) {
-  event.preventDefault();
-
-  const user = document.getElementById("uname").value;
-  const passwordInput = document.getElementById("textInput").value;
-
-  const hashed = await hashSHA256(passwordInput);
-
-  const usernameArray = ["lennart", "isaak"];
-
-  // Pre-hashed passwords (SHA-256)
-  const passwordArray = [
-    "aac3c462e38543d87fca5d94abd03aebcf63dc703e323062daec2e98300b4ad0", // example
-    "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"  // hash of "123456"
-  ];
-  console.log(hashed);
-  let valid = false;
-
-  for (let i = 0; i < usernameArray.length; i++) {
-    if (user === usernameArray[i] && hashed === passwordArray[i]) {
-      valid = true;
-      break;
+    event.preventDefault();
+    const usernameInput = document.getElementById("uname").value;
+    const passwordInput = document.getElementById("textInput").value;
+    const hashedPassword = await hashSHA256(passwordInput);
+    const hashedUsername = await hashSHA256(usernameInput);
+    console.log("Hashed username:", hashedUsername);
+    console.log("Hashed password:", hashedPassword);
+    const storedUsernameHashes = ["50bee02a4d16d3b16cda07211ce67008304cc46920c17e2ac7f986e31e433ae4", "8babc5166044cab61287d1295bdc75762d131b2771f3da2610d433d70905288c"];
+    const storedPasswordHashes = ["aac3c462e38543d87fca5d94abd03aebcf63dc703e323062daec2e98300b4ad0", "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"];
+    let isValid = false;
+    for (let index = 0; index < storedUsernameHashes.length; index++) {
+        if (hashedUsername === storedUsernameHashes[index] && hashedPassword === storedPasswordHashes[index]) {
+            isValid = true;
+            break;
+        }
     }
-  }
-
-  if (valid) {
-    alert("Login successful");
-  } else {
-    alert("Invalid username or password");
-  }
+    if (isValid) {
+        alert("Login successful");
+    } else {
+        alert("Invalid username or password");
+    }
 });
