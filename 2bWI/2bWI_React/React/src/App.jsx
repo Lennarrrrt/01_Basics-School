@@ -4,6 +4,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
 import Card from './card'
+import Button from './Button'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,6 +19,11 @@ function App() {
         <Card />
         <Card />
         <Card />
+      </div>
+      <div>
+        <Button />
+        <Button />
+        <Button />
       </div>
       <div>
         <p>
