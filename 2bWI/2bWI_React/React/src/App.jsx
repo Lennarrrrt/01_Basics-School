@@ -3,6 +3,7 @@ import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
+import Card from './card'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,29 +13,19 @@ function App() {
       <h1>Willkommen!</h1>
 
       <div className="cardcontainer">
-        <div className="card">
-          <h2>Random Picture</h2>
-          <img src="https://picsum.photos/200/300" alt="Random Picture" />
-        </div>
-        <div className="card">
-          <h2>Random Picture</h2>
-          <img src="https://picsum.photos/200/300" alt="Random Picture" />
-        </div>
-        <div className="card">
-          <h2>Random Picture</h2>
-          <img src="https://picsum.photos/200/300" alt="Random Picture" />
-        </div>
-        <div className="card">
-          <h2>Random Picture</h2>
-          <img src="https://picsum.photos/200/300" alt="Random Picture" />
-        </div>
-        <div className="card">
-          <h2>Random Picture</h2>
-          <img src="https://picsum.photos/200/300" alt="Random Picture" />
-        </div>
-
-
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
       </div>
+      <div>
+        <p>
+          That was the site!
+        </p>
+      </div>
+
+
     </>
   )
 }
