@@ -14,12 +14,13 @@ function App() {
       <h1>Willkommen!</h1>
 
       <div className="cardcontainer">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card title="Mein erstes Bild" />
+        <Card title="Mein zweites Bild" />
+        <Card title="Mein drittes Bild" />
+        <Card title="Mein viertes Bild" />
+        <Card title="Mein fünftes Bild" />
       </div>
+
       <div>
         <Button />
         <Button />
