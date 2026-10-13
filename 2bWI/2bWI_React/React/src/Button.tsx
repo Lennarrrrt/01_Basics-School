@@ -1,6 +1,4 @@
-import React from "react";
-
-export default function Button({ x }) {
+export default function Button() {
     return (
         <button>
             This Button does Nothing
