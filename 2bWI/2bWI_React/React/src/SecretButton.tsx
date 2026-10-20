@@ -5,7 +5,6 @@ import './SecretButton.css'
 export default function SecretButton() {
     const [show, setShow] = useState(false)
 
-    // STEP 2 GOES HERE 👇
     useEffect(() => {
         if (!show) return
 
