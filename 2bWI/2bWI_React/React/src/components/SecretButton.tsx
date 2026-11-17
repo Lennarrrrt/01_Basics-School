@@ -18,7 +18,7 @@ export default function SecretButton() {
     return (
         <>
             <button onClick={() => setShow(true)}>
-                This Button does Nothing
+                This Button does Nothing: 0
             </button>
 
             {show && (

@@ -4,7 +4,8 @@ import { useState } from 'react'
 import './App.css'
 import Card from './components/Card'
 import Button from './components/Button'
-import SecretButton from './SecretButton'
+import SecretButton from './components/SecretButton'
+import BackwardsCounter from './components/BackwardsCounter'
 
 function App() {
   const [buttons] = useState(() => {
@@ -42,7 +43,7 @@ function App() {
           image="https://picsum.photos/200/300?random=5"
         />
       </div>
-
+      <BackwardsCounter></BackwardsCounter>
       <div>
         {buttons.map((type, index) =>
           type === 'secret' ? (
